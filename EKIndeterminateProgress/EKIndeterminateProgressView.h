@@ -47,6 +47,15 @@ typedef NS_OPTIONS(NSInteger, EKIndeterminateProgressAnimation){
  *  @return EKIndeterminateProgressView
  */
 - (instancetype) initWithBackground: (UIImage*) background andProgress: (NSArray*) progresses;
+/**
+ *  Initializes view with frame, setting the background (expanding to the frame) and progresses array
+ *
+ *  @param frame View frame
+ *  @param background UIImage to be set as View background
+ *  @param progresses Array of progresses that will be randomly used as progress when progress started
+ *
+ *  @return EKIndeterminateProgressView
+ */
 - (instancetype) initWithFrame:(CGRect)frame background: (UIImage*) background andProgresses: (NSArray*) progresses;
 /**
  *  Starts animating, and unhides if hidesWhenStopped

@@ -58,6 +58,8 @@
 	
 	<option value="//api/name/initWithBackground:andProgress:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithBackground:andProgress:</option>
 	
+	<option value="//api/name/initWithFrame:background:andProgresses:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithFrame:background:andProgresses:</option>
+	
 	<option value="//api/name/startAnimating">&nbsp;&nbsp;&nbsp;&nbsp;- startAnimating</option>
 	
 	<option value="//api/name/stopAnimating">&nbsp;&nbsp;&nbsp;&nbsp;- stopAnimating</option>
@@ -105,6 +107,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/animating">animating</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithBackground:andProgress:">initWithBackground:andProgress:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithFrame:background:andProgresses:">initWithFrame:background:andProgresses:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/startAnimating">startAnimating</a></span></li>
 	
@@ -190,6 +194,12 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/initWithBackground:andProgress:">&ndash;&nbsp;initWithBackground:andProgress:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithFrame:background:andProgresses:">&ndash;&nbsp;initWithFrame:background:andProgresses:</a></code>
 	</span>
 	
 	
@@ -484,6 +494,72 @@
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Initializes view using the background as size and starting at point 0,0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">EKIndeterminateProgressView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithFrame:background:andProgresses:" title="initWithFrame:background:andProgresses:"></a>
+	<h3 class="subsubtitle method-title">initWithFrame:background:andProgresses:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Initializes view with frame, setting the background (expanding to the frame) and progresses array</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (instancetype)initWithFrame:(CGRect)<em>frame</em> background:(UIImage *)<em>background</em> andProgresses:(NSArray *)<em>progresses</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>frame</em></dt>
+			<dd><p>View frame</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>background</em></dt>
+			<dd><p>UIImage to be set as View background</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>progresses</em></dt>
+			<dd><p>Array of progresses that will be randomly used as progress when progress started</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>EKIndeterminateProgressView</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Initializes view with frame, setting the background (expanding to the frame) and progresses array</p>
 	</div>
 	
 	
