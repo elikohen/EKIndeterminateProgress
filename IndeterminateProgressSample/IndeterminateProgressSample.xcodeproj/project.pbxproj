@@ -189,6 +189,7 @@
 				C76E486318DF603E00B3686F /* Sources */,
 				C76E486418DF603E00B3686F /* Frameworks */,
 				C76E486518DF603E00B3686F /* Resources */,
+				C7A1222318E746D000050DF0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -273,6 +274,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C7A1222318E746D000050DF0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "/usr/local/bin/appledoc --project-name EKIndeterminateProgress --project-company \"EKGDev\" --company-id com.ekgdev --output ~/help ../";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C76E486318DF603E00B3686F /* Sources */ = {
@@ -487,6 +504,7 @@
 				C76E489B18DF603E00B3686F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C76E489C18DF603E00B3686F /* Build configuration list for PBXNativeTarget "IndeterminateProgressSampleTests" */ = {
 			isa = XCConfigurationList;
@@ -495,6 +513,7 @@
 				C76E489E18DF603E00B3686F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
