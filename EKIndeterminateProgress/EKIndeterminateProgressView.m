@@ -13,7 +13,9 @@
 #define DEFAULT_DURATION 1.0f
 #define DEFAULT_ANIMATIONS (EKIndeterminateProgressAnimationTranslate)
 
-@interface EKIndeterminateProgressView ()
+@interface EKIndeterminateProgressView (){
+    CFTimeInterval mPauseTime;
+}
 
 @property (nonatomic, strong) NSArray *mProgresses;
 @property (nonatomic, weak) UIImageView *mAnimatingProgress;
@@ -72,11 +74,16 @@
     [self addSubview:progressImg];
     self.mAnimatingProgress = progressImg;
     
+    [self setupAnimationsAndVisiblity];
+}
+
+- (void) setupAnimationsAndVisiblity{
+    NSLog(@"setupAnimationsAndVisiblity");
     if(self.animations & EKIndeterminateProgressAnimationTranslate){
-        [self addMoveXAnimationForLayer:progressImg.layer];
+        [self addMoveXAnimationForLayer:self.mAnimatingProgress.layer];
     }
     if(self.animations & EKIndeterminateProgressAnimationRotate){
-        [self addRotateZAnimationForLayer:progressImg.layer];
+        [self addRotateZAnimationForLayer:self.mAnimatingProgress.layer];
     }
     
     if(self.hidesWhenStopped){
@@ -120,6 +127,7 @@
     translation.duration = self.duration;
     translation.repeatCount = HUGE_VAL;
     translation.autoreverses = YES;
+    translation.delegate = self;
     
     // Allocate array to hold the values to interpolate
     NSMutableArray *values = [[NSMutableArray alloc] init];
@@ -148,6 +156,9 @@
     // Set the timing functions that should be used to calculate interpolation between the first two keyframes
     translation.timingFunctions = timingFunctions;
     
+    CFTimeInterval timeSincePause = [layer convertTime:CACurrentMediaTime() fromLayer:nil] - mPauseTime;
+    translation.beginTime = timeSincePause;
+    
     [layer addAnimation:translation forKey:keyPath];
 }
 
@@ -168,9 +179,20 @@
 	
 	rotation.duration = duration;
     rotation.repeatCount = HUGE_VAL;
-	
+    rotation.delegate = self;
+    
+    CFTimeInterval timeSincePause = [layer convertTime:CACurrentMediaTime() fromLayer:nil] - mPauseTime;
+    rotation.beginTime = timeSincePause;
+    
 	[layer addAnimation:rotation forKey:keyPath];
 }
 
-
+- (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag
+{
+    NSArray *animations = [self.mAnimatingProgress.layer animationKeys];
+    if(animations.count == 0){
+        mPauseTime = [self.mAnimatingProgress.layer convertTime:CACurrentMediaTime() fromLayer:nil];
+        [self setupAnimationsAndVisiblity];
+    }
+}
 @end
