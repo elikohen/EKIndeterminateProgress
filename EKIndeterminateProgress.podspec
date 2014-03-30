@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "EKIndeterminateProgress"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "iOS custom Indeterminate progress view that allows random multiple progress images."
 
   s.description  = <<-DESC
@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   
   s.platform     = :ios, '6.0'
 
-  s.source       = { :git => "https://github.com/elikohen/EKIndeterminateProgress.git", :tag => "0.0.1" }
+  s.source       = { :git => "https://github.com/elikohen/EKIndeterminateProgress.git", :tag => "0.0.2" }
 
   s.source_files  = 'EKIndeterminateProgress/*.{h,m}'
   s.exclude_files = 'IndeterminateProgressSample'
