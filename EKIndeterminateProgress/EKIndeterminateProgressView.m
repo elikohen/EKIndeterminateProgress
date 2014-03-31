@@ -63,7 +63,13 @@
                                      userInfo:nil];
     }
     
-    if(self.mAnimatingProgress) return;
+    if(self.mAnimatingProgress){
+        NSArray *animations = [self.mAnimatingProgress.layer animationKeys];
+        if(animations.count == 0){
+            [self setupAnimationsAndVisiblity];
+        }
+        return;
+    }
     
     //Cactus random get
     NSInteger progressIndex = RANDOM_INT(0, self.mProgresses.count);
@@ -95,9 +101,10 @@
     
     if(!self.mAnimatingProgress) return;
     
-    [self.mAnimatingProgress.layer removeAllAnimations];
-    [self.mAnimatingProgress removeFromSuperview];
+    UIView *temp = self.mAnimatingProgress;
     self.mAnimatingProgress = nil;
+    [temp.layer removeAllAnimations];
+    [temp removeFromSuperview];
     
     if(self.hidesWhenStopped){
         self.hidden = YES;
@@ -155,9 +162,10 @@
     
     // Set the timing functions that should be used to calculate interpolation between the first two keyframes
     translation.timingFunctions = timingFunctions;
-    
-    CFTimeInterval timeSincePause = [layer convertTime:CACurrentMediaTime() fromLayer:nil] - mPauseTime;
-    translation.beginTime = timeSincePause;
+
+    //TODO: FIX
+//    CFTimeInterval timeSincePause = [layer convertTime:CACurrentMediaTime() fromLayer:nil] - mPauseTime;
+//    translation.beginTime = timeSincePause;
     
     [layer addAnimation:translation forKey:keyPath];
 }
@@ -179,20 +187,25 @@
 	
 	rotation.duration = duration;
     rotation.repeatCount = HUGE_VAL;
+    rotation.autoreverses = YES;
     rotation.delegate = self;
     
-    CFTimeInterval timeSincePause = [layer convertTime:CACurrentMediaTime() fromLayer:nil] - mPauseTime;
-    rotation.beginTime = timeSincePause;
+    //TODO: FIX
+//    CFTimeInterval timeSincePause = [layer convertTime:CACurrentMediaTime() fromLayer:nil] - mPauseTime;
+//    rotation.beginTime = timeSincePause;
     
 	[layer addAnimation:rotation forKey:keyPath];
 }
 
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag
 {
+    //TODO: FIX
+    /*if(!self.mAnimatingProgress) return;
+    
     NSArray *animations = [self.mAnimatingProgress.layer animationKeys];
     if(animations.count == 0){
         mPauseTime = [self.mAnimatingProgress.layer convertTime:CACurrentMediaTime() fromLayer:nil];
         [self setupAnimationsAndVisiblity];
-    }
+    }*/
 }
 @end
